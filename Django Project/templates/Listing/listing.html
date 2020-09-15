@@ -1,0 +1,93 @@
+{% extends 'Base.html' %} 
+{% load static %} 
+{% load humanize %} 
+{% block Body %}
+
+
+<!-- =============== CSS Code ==================== -->
+
+<style>
+    .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .card {
+        display: flex;
+        flex-wrap: wrap; 
+        border-style: solid;
+    }
+    
+    .card-block {
+        display: flex;
+        justify-content: center;
+    }
+
+</style>
+
+<!-- =========================== Html Code ========================== -->
+<!-- Heading -->
+<h1 class=title> Cars Listing </h1>
+
+
+
+<div class="container">
+    <div class="row">
+        {% if mycars %} {% for car in mycars %}
+        <div class="card">
+            <img src={{ car.Car_image.url}} alt="" height="250" width="250">
+            <div>
+                <h2>
+                    <span>{{ car.prize}}</span>
+                </h2>
+            </div>
+            <div>
+                <div>
+                    <h4>{{ car.title}}</h4>
+                    <p>
+                        <i></i> Model Name: {{ car.model}}</p>
+                </div>
+                <hr>
+                <div>
+                    <div>
+                        <i></i> Engine cc: {{car.engine_cc}}</div>
+                    <div>
+                        <i></i> Color: {{car.color}}</div>
+                </div>
+                <div>
+                    <div>
+                        <i></i> Car Type: {{ car.car_type}}</div>
+                    <div>
+                        <i></i> Passenger Capacity: {{ car.passenger_capacity}}</div>
+                </div>
+                <hr>
+                <div>
+                    <div>
+                        <i></i>Gear: {{car.gear}}</div>
+                </div>
+                <div>
+                    <div>
+                        <i></i>Price: {{car.price}}</div>
+                </div>
+                <div>
+                    <div>
+                        <i></i><strong>Manufacture Year:</strong> {{ car.manufacture_year }}</div>
+                </div>
+                <hr>
+                <button type="button" class="btn btn-primary">More Info</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="col-md-12">
+    <p>No listings available</p>
+</div>
+{% endif %}
+</div>
+</div>
+
+
+{% endblock Body %}
